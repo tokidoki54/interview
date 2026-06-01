@@ -10,10 +10,12 @@
 
 ```bash
 cd .docker
-docker compose up -d
-docker compose exec php bin/console doctrine:fixtures:load --no-interaction
+docker compose up -d --build
+docker compose exec php composer install
+php bin/console doctrine:schema:create
+php bin/console doctrine:fixtures:load --no-interaction
+php bin/phpunit
 ```
-
 Приложение доступно на http://localhost:8080/
 
 ## Что есть
