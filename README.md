@@ -12,9 +12,9 @@
 cd .docker
 docker compose up -d --build
 docker compose exec php composer install
-php bin/console doctrine:schema:create
-php bin/console doctrine:fixtures:load --no-interaction
-php bin/phpunit
+docker compose exec php php bin/console doctrine:schema:create
+docker compose exec php php bin/console doctrine:fixtures:load --no-interaction
+docker compose exec php php bin/phpunit
 ```
 Приложение доступно на http://localhost:8080/
 
